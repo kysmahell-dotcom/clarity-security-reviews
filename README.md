@@ -8,6 +8,15 @@ Clarity's design eliminates many classic EVM bug classes (reentrancy, integer ov
 
 Each review ships with a harness that models the contract's state machine and executes the exploit scenarios, plus a control path that confirms the honest flow behaves correctly. Where a hypothesis turns out to be wrong under execution, it is documented as disproven — the goal is what the code *actually* does, not what it appears to do on a first read.
 
+For active bug-bounty targets, a behavior is published here only after checking prior audits, repository tests, commit history, issues, and protocol documentation for prior knowledge. Reproducible but already documented or explicitly accepted behavior is treated as a discarded lead, not a payout candidate, and exploit-specific material for embargoed programs is not published without authorization.
+
+## Active research
+
+- [OnRe cadence-state griefing report](./onre/onre-cadence-griefing.md) — candidate Medium,
+  with a deterministic live-parameter PoC.
+- [OnRe research status](./onre/research-status.md) — coverage, deployment evidence, and
+  discarded prior-knowledge leads.
+
 ## Reviews
 
 | Contract | Type | Findings | PoC |
@@ -20,6 +29,7 @@ Each review ships with a harness that models the contract's state machine and ex
 
 ```bash
 node escrow/escrow_poc.js
+node onre/cadence_griefing_poc.js
 ```
 
 No dependencies — the harnesses are plain Node.js and re-implement each contract's state machine with functions annotated back to the Clarity source lines.
